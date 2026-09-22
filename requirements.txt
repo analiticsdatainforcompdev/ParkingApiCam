@@ -2,7 +2,7 @@
 python-dotenv==0.18.0
 
 # Banco de Dados MySQL/MariaDB
-PyMySQL==1.0.0
+PyMySQL==0.9.3
 
 # Mensageria RabbitMQ
 pika==1.1.0
