@@ -4,6 +4,10 @@ sudo rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
 
 pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --trusted-host www.piwheels.org python-dotenv
 
+sudo apt update
+sudo apt install --allow-unauthenticated python3-dev python3-cffi python3-cryptography -y
+
+
 
 
 echo "# ParkingApiCam" >> README.md

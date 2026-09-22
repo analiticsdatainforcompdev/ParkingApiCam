@@ -23,3 +23,7 @@ Flask-CORS==3.0.10
 
 # Monitoramento do sistema (CPU, Memória, Disco)
 psutil==5.9.0
+
+cffi==1.14.5
+cryptography==3.2.1
+
