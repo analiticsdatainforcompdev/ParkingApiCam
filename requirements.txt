@@ -14,7 +14,8 @@ PyJWT==1.7.1
 requests==2.25.1
 
 # Criptografia e segurança
-cryptography==3.3.2
+# Criptografia e segurança
+cryptography==3.2.1
 
 # Framework Web e CORS
 Flask==1.1.2
