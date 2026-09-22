@@ -1,5 +1,5 @@
 # Carregamento de variáveis de ambiente
-python-dotenv==1.0.1
+python-dotenv==0.18.0
 
 # Banco de Dados MySQL/MariaDB
 PyMySQL==1.1.0
