@@ -10,8 +10,8 @@ pika==1.1.0
 # Autenticação e Tokens JWT
 PyJWT==1.7.1
 
-# Requisições HTTP para API externa
-requests==2.27.1
+# Requisições HTTP para API externa (ajustado para a última versão suportada no Python 3.5)
+requests==2.25.1
 
 # Criptografia e segurança
 cryptography==3.3.2
