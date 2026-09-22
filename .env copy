@@ -1,0 +1,48 @@
+# ==============================================
+# CONFIGURAÇÕES DO BANCO DE DADOS MYSQL
+# ==============================================
+DB_HOST=127.0.0.1
+DB_PORT=8206
+DB_NAME=parkinghub
+DB_USER=root
+DB_PASSWORD=root
+DB_CHARSET=utf8mb4
+DB_TIMEOUT=10
+
+# ==============================================
+# CONFIGURAÇÕES DO RABBITMQ
+# ==============================================
+RABBITMQ_HOST=localhost
+RABBITMQ_PORT=5672
+RABBITMQ_USER=guest
+RABBITMQ_PASSWORD=guest
+RABBITMQ_VHOST=/
+RABBITMQ_QUEUE=fila_padrao
+RABBITMQ_EXCHANGE=exchange_padrao
+RABBITMQ_ROUTING_KEY=chave_roteamento
+
+# ==============================================
+# DADOS DA API REMOTA
+# ==============================================
+API_REMOTE_URL=https://api-exemplo.com/v1
+API_REMOTE_TIMEOUT=30000
+API_REMOTE_USER=usuario_api_remota
+API_REMOTE_PASSWORD=senha_api_remota
+API_REMOTE_CLIENT_ID=seu_client_id_aqui
+API_REMOTE_CLIENT_SECRET=seu_client_secret_aqui
+
+# ==============================================
+# CHAVE DE TOKEN / AUTENTICAÇÃO
+# ==============================================
+TOKEN_KEY=chave_secreta_muito_forte_gerada_aleatoriamente_aqui_1234567890abcdef
+TOKEN_ALGORITHM=HS256
+TOKEN_EXPIRES_IN=86400
+CLIENT_KEY=chave_cliente_gerada_para_sua_aplicacao
+CLIENT_SECRET=segredo_do_cliente_para_validacao
+
+# ==============================================
+# CONFIGURAÇÕES GERAIS
+# ==============================================
+APP_ENV=development
+APP_PORT=3000
+API_TOKEN=9bba397b8ac54b6ff94a75e569baace4cf51a122bb377666b7407e4be023743e
