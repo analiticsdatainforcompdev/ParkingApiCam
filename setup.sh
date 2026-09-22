@@ -19,9 +19,9 @@ if [ -d "$VENV_NAME" ]; then
     rm -rf "$VENV_NAME"
 fi
 
-# Cria novo .venv
-echo "📂 Criando novo ambiente virtual..."
-python3 -m venv "$VENV_NAME"
+# Cria novo .venv herdando os pacotes do sistema (cffi, cryptography, etc.)
+echo "📂 Criando novo ambiente virtual com herança de sistema..."
+python3 -m venv --system-site-packages "$VENV_NAME"
 
 # Ativa
 echo "🔌 Ativando ambiente..."
@@ -35,8 +35,7 @@ if [ -f "requirements.txt" ]; then
     pip install $PIP_FLAGS -r requirements.txt
 else
     echo "⚠️  requirements.txt não encontrado. Instalando dependências padrão..."
-    # Nota: python-dotenv fixado na 0.18.0 para garantir compatibilidade com Python 3.5
-    pip install $PIP_FLAGS python-dotenv==0.18.0 mysql-connector-python pika PyJWT requests cryptography flask flask-cors
+    pip install $PIP_FLAGS python-dotenv==0.18.0 PyMySQL==1.0.0 pika==1.1.0 PyJWT==1.7.1 requests==2.25.1 Flask==1.1.2 Flask-CORS==3.0.10 psutil==5.9.0
 fi
 
 echo ""
