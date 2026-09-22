@@ -2,6 +2,8 @@ sudo rabbitmqctl add_user admin admin
 sudo rabbitmqctl set_user_tags admin administrator
 sudo rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
 
+pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --trusted-host www.piwheels.org python-dotenv
+
 
 
 echo "# ParkingApiCam" >> README.md
