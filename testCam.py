@@ -6,6 +6,6 @@ with RedeSensoresCAN(
     bitrate=50000,
 ) as rede:
 
-    resposta = rede.medir(10)
+    resposta = rede.medir(1)
 
     print(resposta)
