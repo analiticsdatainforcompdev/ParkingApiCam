@@ -42,4 +42,4 @@ echo "✅ Instalação concluída! Iniciando aplicação..."
 echo "=========================================="
 
 # Executa aplicação usando o python do ambiente virtual
-"$PYTHON_BIN" app.py
+"$PYTHON_BIN" cam.py
