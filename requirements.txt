@@ -19,7 +19,7 @@ Flask==1.1.2
 Flask-CORS==3.0.10
 
 # Monitoramento do sistema (CPU, Memória, Disco)
-psutil==5.9.0
+psutil==5.8.0
 
 cffi==1.14.5
  
