@@ -23,11 +23,15 @@ fi
 echo "📂 Criando novo ambiente virtual..."
 python3 -m venv --system-site-packages "$VENV_NAME"
 
-# Define o caminho absoluto para o pip do ambiente virtual
-PIP_BIN="$VENV_NAME/bin/pip"
+# Define os caminhos absolutos do binário Python e pip dentro do ambiente
 PYTHON_BIN="$VENV_NAME/bin/python"
+PIP_BIN="$VENV_NAME/bin/pip"
 
-# Flags para ignorar o bloqueio de SSL legado e forçar binários
+# Garante que o pip esteja atualizado e disponível dentro do venv
+echo "📦 Atualizando gerenciador interno do ambiente..."
+"$PYTHON_BIN" -m ensurepip --upgrade || true
+
+# Flags para ignorar o bloqueio de SSL legado e forçar pacotes binários
 PIP_FLAGS="--trusted-host pypi.org --trusted-host files.pythonhosted.org --trusted-host www.piwheels.org --only-binary=:all:"
 
 if [ -f "requirements.txt" ]; then
