@@ -19,28 +19,28 @@ if [ -d "$VENV_NAME" ]; then
     rm -rf "$VENV_NAME"
 fi
 
-# Cria novo .venv com herança de sistema (para aproveitar cryptography/cffi do apt)
+# Cria novo .venv com herança de sistema
 echo "📂 Criando novo ambiente virtual..."
 python3 -m venv --system-site-packages "$VENV_NAME"
 
-# Ativa
-echo "🔌 Ativando ambiente..."
-source "$VENV_NAME/bin/activate"
+# Define o caminho absoluto para o pip do ambiente virtual
+PIP_BIN="$VENV_NAME/bin/pip"
+PYTHON_BIN="$VENV_NAME/bin/python"
 
-# Flags para ignorar o bloqueio de SSL legado do Python 3.5 e forçar pacotes binários
+# Flags para ignorar o bloqueio de SSL legado e forçar binários
 PIP_FLAGS="--trusted-host pypi.org --trusted-host files.pythonhosted.org --trusted-host www.piwheels.org --only-binary=:all:"
 
 if [ -f "requirements.txt" ]; then
     echo "📄 Instalando dependências do requirements.txt..."
-    pip install $PIP_FLAGS -r requirements.txt
+    "$PIP_BIN" install $PIP_FLAGS -r requirements.txt
 else
     echo "⚠️  requirements.txt não encontrado. Instalando dependências padrão..."
-    pip install $PIP_FLAGS python-dotenv==0.18.0 PyMySQL==0.9.3 pika==1.1.0 PyJWT==1.7.1 requests==2.25.1 Flask==1.1.2 Flask-CORS==3.0.10 psutil==5.9.0
+    "$PIP_BIN" install $PIP_FLAGS python-dotenv==0.18.0 PyMySQL==0.9.3 pika==1.1.0 PyJWT==1.7.1 requests==2.25.1 Flask==1.1.2 Flask-CORS==3.0.10
 fi
 
 echo ""
 echo "✅ Instalação concluída! Iniciando aplicação..."
 echo "=========================================="
 
-# Executa aplicação
-python3 app.py
+# Executa aplicação usando o python do ambiente virtual
+"$PYTHON_BIN" app.py
