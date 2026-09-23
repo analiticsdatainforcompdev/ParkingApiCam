@@ -19,23 +19,23 @@ if [ -d "$VENV_NAME" ]; then
     rm -rf "$VENV_NAME"
 fi
 
-# Cria novo .venv herdando os pacotes do sistema (cffi, cryptography, etc.)
-echo "📂 Criando novo ambiente virtual com herança de sistema..."
+# Cria novo .venv com herança de sistema
+echo "📂 Criando novo ambiente virtual..."
 python3 -m venv --system-site-packages "$VENV_NAME"
 
 # Ativa
 echo "🔌 Ativando ambiente..."
 source "$VENV_NAME/bin/activate"
 
-# Flags para ignorar o bloqueio de SSL legado do Python 3.5
-PIP_FLAGS="--trusted-host pypi.org --trusted-host files.pythonhosted.org --trusted-host www.piwheels.org"
+# Flags para ignorar o bloqueio de SSL e forçar pacotes binários
+PIP_FLAGS="--trusted-host pypi.org --trusted-host files.pythonhosted.org --trusted-host www.piwheels.org --only-binary=:all:"
 
 if [ -f "requirements.txt" ]; then
     echo "📄 Instalando dependências do requirements.txt..."
-    pip install $PIP_FLAGS -r requirements.txt
+    "$VENV_NAME/bin/pip" install $PIP_FLAGS -r requirements.txt
 else
     echo "⚠️  requirements.txt não encontrado. Instalando dependências padrão..."
-    pip install $PIP_FLAGS python-dotenv==0.18.0 PyMySQL==1.0.0 pika==1.1.0 PyJWT==1.7.1 requests==2.25.1 Flask==1.1.2 Flask-CORS==3.0.10 psutil==5.9.0
+    "$VENV_NAME/bin/pip" install $PIP_FLAGS python-dotenv==0.18.0 PyMySQL==0.9.3 pika==1.1.0 PyJWT==1.7.1 requests==2.25.1 Flask==1.1.2 Flask-CORS==3.0.10 psutil==5.9.0
 fi
 
 echo ""
