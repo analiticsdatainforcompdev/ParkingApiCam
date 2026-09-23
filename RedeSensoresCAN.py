@@ -1,7 +1,7 @@
-from __future__ import annotations
+ 
 import can
 import time
-from typing import Iterable, Union, Optional
+from typing import Iterable, Union, Optional, List
 
 
 
