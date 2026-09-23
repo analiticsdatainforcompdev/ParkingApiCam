@@ -7,6 +7,7 @@ pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --trus
 sudo apt update
 sudo apt install --allow-unauthenticated python3-dev python3-cffi python3-cryptography -y
 
+sudo apt install --allow-unauthenticated python3-psutil -y
 
 
 
