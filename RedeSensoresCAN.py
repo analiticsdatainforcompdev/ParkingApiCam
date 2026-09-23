@@ -104,7 +104,7 @@ class RedeSensoresCAN:
     def _normalizar_sensores(
         self,
         sensores: Union[int, Iterable[int]]
-    ) -> list[int]:
+    ) -> List[int]:
         """
         Converte um sensor ou uma lista de sensores em uma lista padronizada.
         """
@@ -112,7 +112,7 @@ class RedeSensoresCAN:
         if isinstance(sensores, int):
             lista = [sensores]
         else:
-            lista = list(sensores)
+            lista = List(sensores)
 
         for sensor in lista:
             self._validar_sensor(sensor)
