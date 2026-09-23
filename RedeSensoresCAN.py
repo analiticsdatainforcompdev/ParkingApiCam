@@ -93,8 +93,9 @@ class RedeSensoresCAN:
 
         if not self.MIN_SENSOR <= numero <= self.MAX_SENSOR:
             raise ValueError(
-                f"O sensor deve estar entre "
-                f"{self.MIN_SENSOR} e {self.MAX_SENSOR}."
+                "O sensor deve estar entre {} e {}.".format(
+                    self.MIN_SENSOR, self.MAX_SENSOR
+                )
             )
 
     def _normalizar_sensores(
@@ -145,15 +146,18 @@ class RedeSensoresCAN:
             self.bus.send(mensagem)
 
             print(
-                f"Comando 0x{comando:02X} enviado "
-                f"para o sensor {sensor}"
+                "Comando 0x{:02X} enviado para o sensor {}".format(
+                    comando, sensor
+                )
             )
 
             return True
 
         except can.CanError as erro:
             print(
-                f"Erro ao enviar comando para o sensor {sensor}: {erro}"
+                "Erro ao enviar comando para o sensor {}: {}".format(
+                    sensor, erro
+                )
             )
             return False
 
@@ -228,7 +232,7 @@ class RedeSensoresCAN:
             except can.CanError as erro:
                 return {
                     "sensor": sensor,
-                    "erro": f"Erro ao receber mensagem: {erro}",
+                    "erro": "Erro ao receber mensagem: {}".format(erro),
                 }
 
             if mensagem is None:
@@ -306,7 +310,7 @@ class RedeSensoresCAN:
         elif codigo_resposta == 0x15:
             resultado["tipo"] = "temperatura"
 
-        resultado["codigo_resposta"] = f"0x{codigo_resposta:02X}"
+        resultado["codigo_resposta"] = "0x{:02X}".format(codigo_resposta)
 
         return resultado
 
