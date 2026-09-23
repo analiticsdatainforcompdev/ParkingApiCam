@@ -60,6 +60,7 @@ class RabbitMQConsumer:
             self.canal.start_consuming()
 
         except Exception as e:
+            print(e)
 
             print("Erro no consumer:")
         finally:
