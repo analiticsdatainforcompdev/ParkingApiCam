@@ -41,10 +41,10 @@ class RabbitMQConsumer:
 
     def processar(self, ch, method, props, body):
         dados = json.loads(body.decode("utf-8"))
-        print(f"\n📥 [{method.routing_key}] Mensagem recebida:")
+      #  print(f"\n📥 [{method.routing_key}] Mensagem recebida:")
         print(json.dumps(dados, indent=2, ensure_ascii=False))
         time.sleep(1)
-        print(f"✅ Processada com sucesso!\n")
+        print("✅ Processada com sucesso!\n")
         ch.basic_ack(delivery_tag=method.delivery_tag)
 
     def _run(self):
@@ -56,11 +56,12 @@ class RabbitMQConsumer:
             self.canal.basic_consume(queue=self.fila, on_message_callback=self.processar)
             self.rodando = True
 
-            print(f"🔄 Escutando fila: {self.fila}")
+            #print("🔄 Escutando fila: {self.fila}")
             self.canal.start_consuming()
 
         except Exception as e:
-            print(f"❌ Erro no consumer: {e}")
+
+            print("Erro no consumer:")
         finally:
             self.rodando = False
             if self.conexao and not self.conexao.is_closed:
