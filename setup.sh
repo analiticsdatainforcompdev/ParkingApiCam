@@ -23,23 +23,18 @@ fi
 echo "📂 Criando novo ambiente virtual..."
 python3 -m venv --system-site-packages "$VENV_NAME"
 
-# Define os caminhos absolutos do binário Python e pip dentro do ambiente
+# Define o caminho absoluto do interpretador Python interno
 PYTHON_BIN="$VENV_NAME/bin/python"
-PIP_BIN="$VENV_NAME/bin/pip"
-
-# Garante que o pip esteja atualizado e disponível dentro do venv
-echo "📦 Atualizando gerenciador interno do ambiente..."
-"$PYTHON_BIN" -m ensurepip --upgrade || true
 
 # Flags para ignorar o bloqueio de SSL legado e forçar pacotes binários
 PIP_FLAGS="--trusted-host pypi.org --trusted-host files.pythonhosted.org --trusted-host www.piwheels.org --only-binary=:all:"
 
 if [ -f "requirements.txt" ]; then
     echo "📄 Instalando dependências do requirements.txt..."
-    "$PIP_BIN" install $PIP_FLAGS -r requirements.txt
+    "$PYTHON_BIN" -m pip install $PIP_FLAGS -r requirements.txt
 else
     echo "⚠️  requirements.txt não encontrado. Instalando dependências padrão..."
-    "$PIP_BIN" install $PIP_FLAGS python-dotenv==0.18.0 PyMySQL==0.9.3 pika==1.1.0 PyJWT==1.7.1 requests==2.25.1 Flask==1.1.2 Flask-CORS==3.0.10
+    "$PYTHON_BIN" -m pip install $PIP_FLAGS python-dotenv==0.18.0 PyMySQL==0.9.3 pika==1.1.0 PyJWT==1.7.1 requests==2.25.1 Flask==1.1.2 Flask-CORS==3.0.10
 fi
 
 echo ""
