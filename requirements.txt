@@ -13,10 +13,7 @@ PyJWT==1.7.1
 # Requisições HTTP para API externa (ajustado para a última versão suportada no Python 3.5)
 requests==2.25.1
 
-# Criptografia e segurança
-# Criptografia e segurança
-cryptography==3.2.1
-
+ 
 # Framework Web e CORS
 Flask==1.1.2
 Flask-CORS==3.0.10
@@ -25,5 +22,4 @@ Flask-CORS==3.0.10
 psutil==5.9.0
 
 cffi==1.14.5
-cryptography==3.2.1
-
+ 
