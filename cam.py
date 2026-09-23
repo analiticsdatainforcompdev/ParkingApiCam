@@ -85,7 +85,7 @@ class RabbitMQConsumer:
 
 
 # Inicia o consumer em background
-consumer = RabbitMQConsumer("fila_resposta_1")
+consumer = RabbitMQConsumer("sensores")
 consumer.iniciar()
 
 
